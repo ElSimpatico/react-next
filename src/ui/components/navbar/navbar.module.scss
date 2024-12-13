@@ -1,0 +1,17 @@
+.navbar {
+    &__list {
+        display: flex;
+        list-style: none;
+    }
+    &__list-item {
+        position: relative;
+        border-bottom: .2rem solid transparent;
+        &:not(:last-child) {
+            margin: 0 1.6rem 0 0;
+        }
+        &--active,
+        &:hover {
+            border-bottom: .2rem solid black;
+        }
+    }
+}
