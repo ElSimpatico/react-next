@@ -6,8 +6,10 @@
         "dev": "next dev --turbopack",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
-        "format": "prettier --write ."
+        "lint": "next lint --fix",
+        "format": "prettier --write .",
+        "commit": "lint-staged",
+        "prepare": "husky"
     },
     "dependencies": {
         "clsx": "^2.1.1",
@@ -17,13 +19,18 @@
         "sass": "^1.83.0"
     },
     "devDependencies": {
+        "@commitlint/cli": "^19.6.0",
+        "@commitlint/config-conventional": "^19.6.0",
         "@types/node": "^22.10.2",
         "@types/react": "^19.0.1",
         "@types/react-dom": "^19.0.2",
+        "commitlint": "^19.6.0",
         "eslint": "^9.16.0",
         "eslint-config-next": "15.1.0",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.1",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.2.11",
         "prettier": "^3.4.2",
         "typescript": "^5.7.2"
     }
