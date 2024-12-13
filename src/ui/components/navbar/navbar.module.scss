@@ -5,13 +5,13 @@
     }
     &__list-item {
         position: relative;
-        border-bottom: .2rem solid transparent;
+        border-bottom: 0.2rem solid transparent;
         &:not(:last-child) {
             margin: 0 1.6rem 0 0;
         }
         &--active,
         &:hover {
-            border-bottom: .2rem solid black;
+            border-bottom: 0.2rem solid black;
         }
     }
 }
