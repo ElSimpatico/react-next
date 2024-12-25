@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 
+import ThemeProvider from "@/ui/components/theme-provider/themeProvider";
 import Header from "@/ui/components/header/header";
 import Footer from "@/ui/components/footer/footer";
-
-import "./globals.css";
 
 import styles from "./layout.module.scss";
 
@@ -30,13 +29,15 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" suppressHydrationWarning>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${styles.layout__body}`}
             >
-                <Header />
-                <main className={styles.layout__main}>{children}</main>
-                <Footer />
+                <ThemeProvider>
+                    <Header />
+                    <main className={styles.layout__main}>{children}</main>
+                    <Footer />
+                </ThemeProvider>
             </body>
         </html>
     );
