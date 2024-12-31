@@ -1,0 +1,15 @@
+.header-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &__drawer-header {
+        display: grid;
+        grid-template-columns: 0.4fr auto;
+        align-items: center;
+    }
+
+    &__drawer-close {
+        margin-left: auto;
+    }
+}

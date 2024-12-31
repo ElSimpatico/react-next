@@ -3,4 +3,5 @@ import { NavbarLink } from "@/types/navbarLink";
 
 export interface NavbarProps extends CommonProps {
     links: NavbarLink[];
+    vertical?: boolean;
 }

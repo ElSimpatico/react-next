@@ -1,8 +1,8 @@
 .header {
     display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: baseline;
-    gap: 4rem;
-    padding: 1.6rem 3.2rem;
-    border: 0.1rem solid black;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: var(--nx-sizes-10);
+    padding: var(--nx-sizes-4) var(--nx-sizes-8);
+    border-bottom: var(--nx-sizes-0\.5) solid var(--nx-colors-border-muted);
 }

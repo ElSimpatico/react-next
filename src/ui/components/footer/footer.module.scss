@@ -1,5 +1,5 @@
 .footer {
-    background-color: black;
-    color: white;
-    padding: 1.6rem 3.2rem;
+    background-color: var(--nx-colors-bg-inverted);
+    color: var(--nx-colors-bg);
+    padding: var(--nx-sizes-4) var(--nx-sizes-8);
 }
