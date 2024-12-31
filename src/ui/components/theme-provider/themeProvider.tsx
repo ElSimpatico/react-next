@@ -5,7 +5,6 @@ import {
     createSystem,
     defaultConfig,
 } from "@chakra-ui/react";
-
 import { PropsWithChildren } from "react";
 
 const config = defineConfig({

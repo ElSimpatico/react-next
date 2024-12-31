@@ -1,10 +1,4 @@
-import Image from "next/image";
-
 import { IconButton, Box } from "@chakra-ui/react";
-import { IoMdClose } from "react-icons/io";
-
-import { CommonProps } from "@/types/commonProps";
-
 import {
     DrawerBackdrop,
     DrawerBody,
@@ -12,10 +6,14 @@ import {
     DrawerHeader,
     DrawerRoot,
 } from "@chakra-ui/react";
+import Image from "next/image";
+import { IoMdClose } from "react-icons/io";
+
+import { LINKS } from "@/constants/links";
+import { CommonProps } from "@/types/commonProps";
 
 import styles from "./headerMenu.module.scss";
 import Navbar from "../navbar/navbar";
-import { LINKS } from "@/constants/links";
 
 interface HeaderMenuProps extends CommonProps {
     open?: boolean;

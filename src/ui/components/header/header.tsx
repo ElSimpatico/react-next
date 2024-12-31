@@ -1,15 +1,13 @@
 "use client";
-import { useState } from "react";
-import Image from "next/image";
-
 import { IconButton, HStack } from "@chakra-ui/react";
+import Image from "next/image";
+import { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 
 import { LINKS } from "@/constants/links";
-import Navbar from "@/ui/components/navbar/navbar";
-import HeaderMenu from "@/ui/components/heder-menu/headerMenu";
 import { CommonProps } from "@/types/commonProps";
-
+import HeaderMenu from "@/ui/components/heder-menu/headerMenu";
+import Navbar from "@/ui/components/navbar/navbar";
 import { useBreakpoint } from "@/ui/hooks/useBreakpoint";
 
 import styles from "./header.module.scss";
