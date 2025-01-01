@@ -1,10 +1,10 @@
 interface DetailPageProps {
-    params: {
+    params: Promise<{
         id: string;
-    };
+    }>;
 }
 
-export default function Detail({ params }: DetailPageProps) {
-    const { id } = params;
+export default async function Detail({ params }: DetailPageProps) {
+    const { id } = await params;
     return <div>{`content Detail. ID: ${id ?? ""}`}</div>;
 }

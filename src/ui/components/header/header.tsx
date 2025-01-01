@@ -12,7 +12,7 @@ import { useBreakpoint } from "@/ui/hooks/useBreakpoint";
 
 import styles from "./header.module.scss";
 
-export default function Header({ testId }: CommonProps) {
+export default function Header({ testId = "testId" }: CommonProps) {
     const breakpoint = useBreakpoint();
 
     const [isOpen, setIsOpen] = useState(false);
