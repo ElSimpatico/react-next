@@ -5,7 +5,8 @@ import { useState } from "react";
 import { CiMenuBurger } from "react-icons/ci";
 
 import { LINKS } from "@/constants/links";
-import { CommonProps } from "@/types/commonProps";
+import { useAuth } from "@/context/AuthProvider";
+import { CommonProps } from "@/types/CommonProps";
 import HeaderMenu from "@/ui/components/heder-menu/headerMenu";
 import Navbar from "@/ui/components/navbar/navbar";
 import { useBreakpoint } from "@/ui/hooks/useBreakpoint";
@@ -13,22 +14,25 @@ import { useBreakpoint } from "@/ui/hooks/useBreakpoint";
 import styles from "./header.module.scss";
 
 export default function Header({ testId = "testId" }: CommonProps) {
+    const { user, logout } = useAuth();
     const breakpoint = useBreakpoint();
 
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <header data-testid={testId} className={styles.header}>
-            <HStack w="auto" verticalAlign="middle">
-                <IconButton
-                    aria-label="open menu"
-                    variant={"outline"}
-                    size="md"
-                    onClick={() => setIsOpen(true)}
-                >
-                    <CiMenuBurger />
-                </IconButton>
-            </HStack>
+            {user && (
+                <HStack w="auto" verticalAlign="middle">
+                    <IconButton
+                        aria-label="open menu"
+                        variant={"outline"}
+                        size="md"
+                        onClick={() => setIsOpen(true)}
+                    >
+                        <CiMenuBurger />
+                    </IconButton>
+                </HStack>
+            )}
             <Image
                 className={styles.logo}
                 src="/next.svg"
@@ -38,12 +42,18 @@ export default function Header({ testId = "testId" }: CommonProps) {
                 height={9}
                 priority
             />
-            {breakpoint !== "S" && <Navbar links={LINKS} />}
-            <HeaderMenu
-                open={isOpen}
-                fullWidth={breakpoint === "S"}
-                onClose={() => setIsOpen(false)}
-            />
+            {user && (
+                <>
+                    {breakpoint !== "S" && <Navbar links={LINKS} />}
+                    <HeaderMenu
+                        open={isOpen}
+                        fullWidth={breakpoint === "S"}
+                        user={user}
+                        onLogout={logout}
+                        onClose={() => setIsOpen(false)}
+                    />
+                </>
+            )}
         </header>
     );
 }

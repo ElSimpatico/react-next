@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 
-import styles from "./navbar.module.scss";
 import { NavbarProps } from "./navbarProps";
+
+import styles from "./navbar.module.scss";
 
 export default function Navbar({ links, vertical }: NavbarProps) {
     const pathname = usePathname();

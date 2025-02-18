@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 
+import AuthProvider from "@/context/AuthProvider";
 import Footer from "@/ui/components/footer/footer";
 import Header from "@/ui/components/header/header";
 import ThemeProvider from "@/ui/components/theme-provider/themeProvider";
@@ -34,11 +35,13 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${styles.layout__body}`}
             >
-                <ThemeProvider>
-                    <Header />
-                    <main className={styles.layout__main}>{children}</main>
-                    <Footer />
-                </ThemeProvider>
+                <AuthProvider>
+                    <ThemeProvider>
+                        <Header />
+                        <main className={styles.layout__main}>{children}</main>
+                        <Footer />
+                    </ThemeProvider>
+                </AuthProvider>
             </body>
         </html>
     );

@@ -1,4 +1,4 @@
-import { CommonProps } from "@/types/commonProps";
+import { CommonProps } from "@/types/CommonProps";
 
 import styles from "./footer.module.scss";
 

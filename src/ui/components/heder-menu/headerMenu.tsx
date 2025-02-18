@@ -1,4 +1,5 @@
 import {
+    Button,
     IconButton,
     Box,
     DrawerBackdrop,
@@ -6,26 +7,35 @@ import {
     DrawerContent,
     DrawerHeader,
     DrawerRoot,
+    DrawerFooter,
+    AccordionRoot,
+    AccordionItem,
+    AccordionItemTrigger,
+    AccordionItemContent,
+    AccordionItemIndicator,
 } from "@chakra-ui/react";
 import Image from "next/image";
-import { IoMdClose } from "react-icons/io";
+import { IoMdClose, IoIosArrowDown } from "react-icons/io";
 
 import { LINKS } from "@/constants/links";
-import { CommonProps } from "@/types/commonProps";
+import { CommonProps } from "@/types/CommonProps";
 
 import Navbar from "../navbar/navbar";
 
 import styles from "./headerMenu.module.scss";
-
 interface HeaderMenuProps extends CommonProps {
     open?: boolean;
     fullWidth?: boolean;
+    user: { email: string };
+    onLogout: () => void;
     onClose?: () => void;
 }
 
 export default function HeaderMenu({
     open,
     fullWidth,
+    user,
+    onLogout,
     onClose,
 }: HeaderMenuProps) {
     return (
@@ -57,6 +67,27 @@ export default function HeaderMenu({
                     <DrawerBody>
                         <Navbar links={LINKS} vertical></Navbar>
                     </DrawerBody>
+                    <DrawerFooter>
+                        <AccordionRoot collapsible variant={"plain"}>
+                            <AccordionItem value="user" key={"user"}>
+                                <AccordionItemTrigger>
+                                    {user.email}
+                                    <AccordionItemIndicator marginLeft={"auto"}>
+                                        <IoIosArrowDown />
+                                    </AccordionItemIndicator>
+                                </AccordionItemTrigger>
+                                <AccordionItemContent>
+                                    <Button
+                                        variant={"plain"}
+                                        color={"red.400"}
+                                        onClick={onLogout}
+                                    >
+                                        Logout
+                                    </Button>
+                                </AccordionItemContent>
+                            </AccordionItem>
+                        </AccordionRoot>
+                    </DrawerFooter>
                 </DrawerContent>
             </DrawerRoot>
         </Box>

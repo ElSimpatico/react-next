@@ -1,5 +1,5 @@
-import { CommonProps } from "@/types/commonProps";
-import { NavbarLink } from "@/types/navbarLink";
+import { CommonProps } from "@/types/CommonProps";
+import { NavbarLink } from "@/types/NavbarLink";
 
 export interface NavbarProps extends CommonProps {
     links: NavbarLink[];
