@@ -1,14 +1,14 @@
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 import { AuthResponse, AuthStrategy } from "@/interfaces/AuthStrategy";
+import prisma from "@/lib/prisma";
 import { User } from "@/models/User";
 import { CustomError } from "@/utils/error";
 
 export class JwtAuthStrategy implements AuthStrategy {
     async authenticate(email: string, password: string): Promise<AuthResponse> {
-        const user = await new PrismaClient().user.findUnique({
+        const user = await prisma.user.findUnique({
             where: { email },
         });
 
@@ -37,7 +37,6 @@ export class JwtAuthStrategy implements AuthStrategy {
     async logout() {}
 
     async register(email: string, password: string): Promise<AuthResponse> {
-        const prisma = new PrismaClient();
         const existingUser = await prisma.user.findUnique({ where: { email } });
         if (existingUser) {
             throw new CustomError(
