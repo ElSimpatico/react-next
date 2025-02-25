@@ -1,4 +1,4 @@
-import { NavbarLink } from "@/types/navbarLink";
+import { NavbarLink } from "@/types/Navbar";
 
 import { ROUTES } from "./routes";
 
