@@ -1,18 +1,22 @@
 "use client";
-
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect } from "react";
 
 import { ENDPOINTS } from "@/constants/endpoints";
-import { useAuth } from "@/context/AuthProvider";
+import { ROUTES } from "@/constants/routes";
 import useFetch from "@/hooks/useFetch";
+import { useRouter } from "@/i18n/routing";
+import { User } from "@/models/User";
 import AuthForm from "@/ui/components/authForm/AuthForm";
 import { AuthFormFieds as AuthFormType } from "@/ui/components/authForm/AuthFormProps";
 
-export default function Login() {
-    const { login } = useAuth();
-    const { error, isLoading, success, data, post } = useFetch<{
-        user: { email: string };
-    }>(ENDPOINTS.LOGIN);
+export default function Register() {
+    const router = useRouter();
+    const t = useTranslations();
+
+    const { isLoading, success, error, data, post } = useFetch<User>(
+        ENDPOINTS.REGISTER,
+    );
 
     const onSubmitHanlder = useCallback(
         (values: AuthFormType) => {
@@ -23,15 +27,15 @@ export default function Login() {
 
     useEffect(() => {
         if (success && data) {
-            login(data.user);
+            router.push(ROUTES.LOGIN);
         }
-    }, [success, data, login]);
+    }, [data, router, success]);
 
     return (
         <AuthForm
-            type="login"
+            type="register"
             onSubmit={onSubmitHanlder}
-            error={error ?? undefined}
+            error={error ? t(error.id) : undefined}
             loading={isLoading}
         />
     );

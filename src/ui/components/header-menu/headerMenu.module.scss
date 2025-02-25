@@ -12,4 +12,10 @@
     &__drawer-close {
         margin-left: auto;
     }
+
+    &__user-accordion-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

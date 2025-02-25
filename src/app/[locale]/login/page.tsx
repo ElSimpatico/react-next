@@ -1,19 +1,25 @@
 "use client";
-import { useRouter } from "next/navigation";
+
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect } from "react";
 
 import { ENDPOINTS } from "@/constants/endpoints";
-import { ROUTES } from "@/constants/routes";
+import { useAuth } from "@/context/AuthProvider";
 import useFetch from "@/hooks/useFetch";
+import { User } from "@/models/User";
 import AuthForm from "@/ui/components/authForm/AuthForm";
 import { AuthFormFieds as AuthFormType } from "@/ui/components/authForm/AuthFormProps";
 
-export default function Register() {
-    const router = useRouter();
-
-    const { isLoading, success, error, data, post } = useFetch(
-        ENDPOINTS.REGISTER,
-    );
+export default function Login() {
+    const { login } = useAuth();
+    const t = useTranslations();
+    const {
+        error,
+        isLoading,
+        success,
+        data: user,
+        post,
+    } = useFetch<User>(ENDPOINTS.LOGIN);
 
     const onSubmitHanlder = useCallback(
         (values: AuthFormType) => {
@@ -23,16 +29,16 @@ export default function Register() {
     );
 
     useEffect(() => {
-        if (success && data) {
-            router.push(ROUTES.LOGIN);
+        if (success && user) {
+            login(user);
         }
-    }, [data, router, success]);
+    }, [success, user, login]);
 
     return (
         <AuthForm
-            type="register"
+            type="login"
             onSubmit={onSubmitHanlder}
-            error={error ?? undefined}
+            error={error ? t(error.id) : undefined}
             loading={isLoading}
         />
     );

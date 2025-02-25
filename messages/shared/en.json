@@ -1,0 +1,8 @@
+{
+    "shared_login": "Login",
+    "shared_register": "Register",
+    "shared_logout": "Logout",
+    "shared_footer": "Developed for {name}",
+    "shared_navbar_home": "Home",
+    "shared_navbar_about": "About"
+}

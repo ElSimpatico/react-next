@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 
+import { JSONResponse } from "@/interfaces/Response";
+
 export async function logout() {
-    const response = NextResponse.json(
-        { message: "Logged out" },
+    const response = NextResponse.json<JSONResponse<null>>(
+        { data: null },
         { status: 200 },
     );
     response.cookies.set("token", "", {

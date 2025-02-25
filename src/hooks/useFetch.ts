@@ -1,9 +1,11 @@
 import { useCallback, useState } from "react";
 
+import { ErrorResponse, JSONResponse } from "@/interfaces/Response";
+
 export default function useFetch<T>(url: string) {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [success, setSuccess] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<ErrorResponse | null>(null);
     const [data, setData] = useState<T | null>(null);
 
     const request = useCallback(
@@ -17,21 +19,29 @@ export default function useFetch<T>(url: string) {
                     ...restOptions,
                 });
 
-                const data = await response.json().catch(() => null);
+                const jsonResponse = (await response
+                    .json()
+                    .catch(() => null)) as JSONResponse<T>;
 
                 if (!response.ok) {
-                    throw new Error(
-                        data?.error ?? response.statusText ?? "Unknokwn error",
+                    setError(
+                        jsonResponse?.error ?? {
+                            id: "unknown",
+                            message: "An unexpected error occurred",
+                        },
                     );
+                    setSuccess(false);
+                    return;
                 }
 
-                setData(data);
+                setData(jsonResponse.data);
                 setSuccess(true);
             } catch (err) {
-                const errorMessage =
-                    err instanceof Error ? err.message : "Unknokwn error";
-                console.error("Fetch Error: ", errorMessage);
-                setError(errorMessage);
+                console.error("Fetch Error:", err);
+                setError({
+                    id: "network_error",
+                    message: "Network error or server unreachable",
+                });
                 setSuccess(false);
             } finally {
                 setIsLoading(false);

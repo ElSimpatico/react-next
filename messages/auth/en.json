@@ -1,0 +1,8 @@
+{
+    "auth_title": "{type, select, login {Login} register {Register} other {}}",
+    "auth_form_email_label": "Email",
+    "auth_form_password_label": "Password",
+    "auth_form_confirmPassword_label": "Confirm password",
+    "auth_redirect": "{type, select, login {New in Next.js?} register {Already have an account?} other {}}",
+    "auth_redirect_link": "{type, select, login {Create an account} register {Sign in} other {}}"
+}

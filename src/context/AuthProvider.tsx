@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from "next/navigation";
+import { useLocale } from "next-intl";
 import React, {
     createContext,
     PropsWithChildren,
@@ -12,10 +12,8 @@ import React, {
 import { ENDPOINTS } from "@/constants/endpoints";
 import { ROUTES } from "@/constants/routes";
 import useFetch from "@/hooks/useFetch";
-
-export interface User {
-    email: string;
-}
+import { useRouter } from "@/i18n/routing";
+import { User } from "@/models/User";
 
 export interface AuthContextType {
     user?: User;
@@ -37,14 +35,15 @@ export function useAuth() {
 export default function AuthProvider({ children }: PropsWithChildren) {
     const [user, setUser] = useState<User>();
     const router = useRouter();
+    const locale = useLocale();
     const { post: postLogout, success: successLogout } = useFetch(
         ENDPOINTS.LOGOUT,
     );
     const {
         get: getValidate,
-        data: dataValidate,
+        data: userValidated,
         success: successValidate,
-    } = useFetch<{ user: User }>(ENDPOINTS.VALIDATE);
+    } = useFetch<User>(ENDPOINTS.VALIDATE);
 
     const login = useCallback(
         (user: User) => {
@@ -63,17 +62,17 @@ export default function AuthProvider({ children }: PropsWithChildren) {
     }, [getValidate]);
 
     useEffect(() => {
-        if (successValidate && dataValidate) {
-            setUser(dataValidate.user);
+        if (successValidate && userValidated) {
+            setUser(userValidated);
         }
-    }, [dataValidate, successValidate]);
+    }, [userValidated, successValidate]);
 
     useEffect(() => {
         if (successLogout) {
             setUser(undefined);
-            window.location.replace(ROUTES.LOGIN);
+            window.location.replace(`${locale}${ROUTES.LOGIN}`);
         }
-    }, [successLogout]);
+    }, [locale, successLogout]);
 
     return (
         <AuthContext.Provider value={{ user, login, logout }}>

@@ -1,6 +1,3 @@
 {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-        "pnpm eslint --fix",
-        "pnpm format"
-    ]
+    "src/**/*.{js,jsx,ts,tsx,json}": ["pnpm eslint --fix", "pnpm format"]
 }

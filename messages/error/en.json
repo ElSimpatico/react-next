@@ -1,0 +1,5 @@
+{
+    "error_internal_server": "Internal server error",
+    "error_unauthorized_user": "Invalid email or password",
+    "error_user_exist": "The register already exists"
+}

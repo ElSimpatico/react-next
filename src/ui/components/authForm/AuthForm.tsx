@@ -7,7 +7,7 @@ import {
     CloseButton,
     Link as ChakraLink,
 } from "@chakra-ui/react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import React, {
     ChangeEvent,
     FormEvent,
@@ -17,6 +17,7 @@ import React, {
 } from "react";
 
 import { ROUTES } from "@/constants/routes";
+import { Link } from "@/i18n/routing";
 import FormField from "@/ui/components/formField/FormField";
 
 import { AuthFormProps, AuthFormFieds, initAuthForm } from "./AuthFormProps";
@@ -28,6 +29,7 @@ export default function AuthForm({
     error,
     loading,
 }: AuthFormProps) {
+    const t = useTranslations();
     const [showGlobalError, setShowGlobalError] = useState<boolean>();
     const { errors, hasErrors, validateForm, validateField } =
         useValidate(type);
@@ -93,12 +95,12 @@ export default function AuthForm({
                 borderRadius="md"
             >
                 <Heading textAlign={"center"} mb={6}>
-                    {type === "login" ? "Iniciar sesion" : "Registro"}
+                    {t("auth_title", { type })}
                 </Heading>
                 <form onSubmit={onSubmitHanlder} noValidate>
                     <FormField
                         required
-                        label="Email"
+                        label={t("auth_form_email_label")}
                         invalid={!!errors.email}
                         errorText={errors.email}
                     >
@@ -111,7 +113,7 @@ export default function AuthForm({
                     </FormField>
                     <FormField
                         required
-                        label="Contraseña"
+                        label={t("auth_form_password_label")}
                         invalid={!!errors.password}
                         errorText={errors.password}
                     >
@@ -125,7 +127,7 @@ export default function AuthForm({
                     {type === "register" && (
                         <FormField
                             required
-                            label="Confirmar contraseña"
+                            label={t("auth_form_confirmPassword_label")}
                             invalid={!!errors.confirmPassword}
                             errorText={errors.confirmPassword}
                         >
@@ -144,7 +146,9 @@ export default function AuthForm({
                         disabled={hasErrors}
                         loading={loading}
                     >
-                        {type === "login" ? "Iniciar sesion" : "Registrarse"}
+                        {type === "login"
+                            ? t("shared_login")
+                            : t("shared_register")}
                     </Button>
                 </form>
             </Box>
@@ -157,17 +161,17 @@ export default function AuthForm({
                 borderRadius="md"
             >
                 <Heading size={"md"} fontWeight={"normal"} textAlign={"center"}>
-                    <span>
-                        {type === "login"
-                            ? "New in Next.js?"
-                            : "Already have an account?"}
-                    </span>
+                    <span>{t("auth_redirect", { type })}</span>
                     <ChakraLink asChild colorPalette={"blue"} marginLeft={"2"}>
-                        {type === "login" ? (
-                            <Link href={ROUTES.REGISTER}>Create an count</Link>
-                        ) : (
-                            <Link href={ROUTES.LOGIN}>Sign in</Link>
-                        )}
+                        <Link
+                            href={
+                                type === "login"
+                                    ? ROUTES.REGISTER
+                                    : ROUTES.LOGIN
+                            }
+                        >
+                            {t("auth_redirect_link", { type })}
+                        </Link>
                     </ChakraLink>
                 </Heading>
             </Box>

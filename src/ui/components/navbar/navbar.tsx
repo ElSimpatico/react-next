@@ -1,9 +1,8 @@
-"use client";
-
 import { clsx } from "clsx";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useMemo } from "react";
+
+import { Link, usePathname } from "@/i18n/routing";
 
 import { NavbarProps } from "./navbarProps";
 
@@ -11,6 +10,7 @@ import styles from "./navbar.module.scss";
 
 export default function Navbar({ links, vertical }: NavbarProps) {
     const pathname = usePathname();
+    const t = useTranslations();
 
     const classActive = styles["navbar__list-item--active"];
 
@@ -33,7 +33,7 @@ export default function Navbar({ links, vertical }: NavbarProps) {
                                 : pathname === link.href,
                     })}
                 >
-                    <Link href={link.href}>{link.label}</Link>
+                    <Link href={link.href}>{t(link.key)}</Link>
                 </li>
             ))}
         </ul>

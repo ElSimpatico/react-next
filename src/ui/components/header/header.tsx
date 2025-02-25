@@ -7,9 +7,10 @@ import { CiMenuBurger } from "react-icons/ci";
 import { LINKS } from "@/constants/links";
 import { useAuth } from "@/context/AuthProvider";
 import { CommonProps } from "@/types/CommonProps";
-import HeaderMenu from "@/ui/components/heder-menu/headerMenu";
-import Navbar from "@/ui/components/navbar/navbar";
+import HeaderMenu from "@/ui/components/header-menu/headerMenu";
 import { useBreakpoint } from "@/ui/hooks/useBreakpoint";
+
+import Navbar from "../navbar/navbar";
 
 import styles from "./header.module.scss";
 

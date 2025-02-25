@@ -15,11 +15,13 @@ import {
     AccordionItemIndicator,
 } from "@chakra-ui/react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { IoMdClose, IoIosArrowDown } from "react-icons/io";
 
 import { LINKS } from "@/constants/links";
 import { CommonProps } from "@/types/CommonProps";
 
+import LanguageSelector from "../language-selector/LanguageSelector";
 import Navbar from "../navbar/navbar";
 
 import styles from "./headerMenu.module.scss";
@@ -38,9 +40,15 @@ export default function HeaderMenu({
     onLogout,
     onClose,
 }: HeaderMenuProps) {
+    const t = useTranslations();
     return (
         <Box className={styles["header-menu"]} w={fullWidth ? "full" : "lg"}>
-            <DrawerRoot placement="start" open={open} size="full">
+            <DrawerRoot
+                placement="start"
+                open={open}
+                size="full"
+                onInteractOutside={onClose}
+            >
                 <DrawerBackdrop />
                 <DrawerContent>
                     <DrawerHeader
@@ -65,25 +73,36 @@ export default function HeaderMenu({
                         </IconButton>
                     </DrawerHeader>
                     <DrawerBody>
-                        <Navbar links={LINKS} vertical></Navbar>
+                        <Navbar links={LINKS} vertical />
                     </DrawerBody>
                     <DrawerFooter>
                         <AccordionRoot collapsible variant={"plain"}>
                             <AccordionItem value="user" key={"user"}>
-                                <AccordionItemTrigger>
+                                <AccordionItemTrigger cursor={"pointer"}>
                                     {user.email}
                                     <AccordionItemIndicator marginLeft={"auto"}>
                                         <IoIosArrowDown />
                                     </AccordionItemIndicator>
                                 </AccordionItemTrigger>
                                 <AccordionItemContent>
-                                    <Button
-                                        variant={"plain"}
-                                        color={"red.400"}
-                                        onClick={onLogout}
+                                    <div
+                                        className={
+                                            styles[
+                                                "header-menu__user-accordion-content"
+                                            ]
+                                        }
                                     >
-                                        Logout
-                                    </Button>
+                                        <LanguageSelector
+                                            onSelectLanguage={onClose}
+                                        />
+                                        <Button
+                                            variant={"plain"}
+                                            color={"red.400"}
+                                            onClick={onLogout}
+                                        >
+                                            {t("shared_logout")}
+                                        </Button>
+                                    </div>
                                 </AccordionItemContent>
                             </AccordionItem>
                         </AccordionRoot>
