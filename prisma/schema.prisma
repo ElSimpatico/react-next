@@ -19,3 +19,15 @@ model User {
   password String
   createdAt DateTime @default(now())
 }
+
+model Technology {
+  id            String      @id @default(uuid())
+  name          String
+  description   String
+  releaseDate   DateTime
+  creator       String
+  mainFeatures  String[]
+  useCases      String[]
+  website       String
+  logoImageUrl  String
+}
