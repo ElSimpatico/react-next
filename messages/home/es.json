@@ -1,0 +1,6 @@
+{
+    "home_title_technologies": "Listado de tecnologías ({count})",
+    "home_datatable_header_NAME": "Tecnología",
+    "home_datatable_header_CREATOR": "Creador",
+    "home_datatable_header_DATE": "Fecha de lanzamiento"
+}
