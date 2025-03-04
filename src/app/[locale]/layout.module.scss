@@ -1,4 +1,9 @@
 .layout {
+    &__html,
+    &__body {
+        height: 100%;
+    }
+
     &__body {
         display: grid;
         min-height: 100dvh;
