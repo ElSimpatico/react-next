@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 import { IoMdClose, IoIosArrowDown } from "react-icons/io";
 
 import { LINKS } from "@/constants/links";
@@ -41,6 +42,22 @@ export default function HeaderMenu({
     onClose,
 }: HeaderMenuProps) {
     const t = useTranslations();
+
+    useEffect(() => {
+        if (open) {
+            document.documentElement.style.overflow = "hidden";
+            document.body.style.overflow = "hidden";
+        } else {
+            document.documentElement.style.overflow = "";
+            document.body.style.overflow = "";
+        }
+
+        return () => {
+            document.documentElement.style.overflow = "";
+            document.body.style.overflow = "";
+        };
+    }, [open]);
+
     return (
         <Box className={styles["header-menu"]} w={fullWidth ? "full" : "lg"}>
             <DrawerRoot
