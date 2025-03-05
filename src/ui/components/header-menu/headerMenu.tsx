@@ -74,7 +74,7 @@ export default function HeaderMenu({
                         </IconButton>
                     </DrawerHeader>
                     <DrawerBody>
-                        <Navbar links={LINKS} vertical />
+                        <Navbar links={LINKS} vertical onClickLink={onClose} />
                     </DrawerBody>
                     <DrawerFooter>
                         <AccordionRoot collapsible variant={"plain"}>

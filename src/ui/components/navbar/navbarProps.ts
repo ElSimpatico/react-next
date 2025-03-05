@@ -5,4 +5,5 @@ export interface NavbarProps extends CommonProps {
     links: NavbarLink[];
     pathname?: string;
     vertical?: boolean;
+    onClickLink?: () => void;
 }

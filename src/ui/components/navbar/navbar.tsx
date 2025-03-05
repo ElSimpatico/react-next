@@ -8,7 +8,7 @@ import { NavbarProps } from "./navbarProps";
 
 import styles from "./navbar.module.scss";
 
-export default function Navbar({ links, vertical }: NavbarProps) {
+export default function Navbar({ links, vertical, onClickLink }: NavbarProps) {
     const pathname = usePathname();
     const t = useTranslations();
 
@@ -33,7 +33,9 @@ export default function Navbar({ links, vertical }: NavbarProps) {
                                 : pathname === link.href,
                     })}
                 >
-                    <Link href={link.href}>{t(link.key)}</Link>
+                    <Link href={link.href} onClick={onClickLink}>
+                        {t(link.key)}
+                    </Link>
                 </li>
             ))}
         </ul>
