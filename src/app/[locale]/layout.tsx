@@ -7,7 +7,7 @@ import AuthProvider from "@/context/AuthProvider";
 import { routing } from "@/i18n/routing";
 import Footer from "@/ui/components/footer/Footer";
 import Header from "@/ui/components/header/Header";
-import ThemeProvider from "@/ui/components/theme-provider/themeProvider";
+import ThemeProvider from "@/ui/components/theme-provider/ThemeProvider";
 
 import styles from "./layout.module.scss";
 
