@@ -12,7 +12,7 @@ import { useBreakpoint } from "@/ui/hooks/useBreakpoint";
 
 import Navbar from "../navbar/navbar";
 
-import styles from "./header.module.scss";
+import styles from "./Header.module.scss";
 
 export default function Header({ testId = "testId" }: CommonProps) {
     const { user, logout } = useAuth();
