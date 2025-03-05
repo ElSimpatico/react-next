@@ -7,8 +7,8 @@ import { ENDPOINTS } from "@/constants/endpoints";
 import { useAuth } from "@/context/AuthProvider";
 import useFetch from "@/hooks/useFetch";
 import { User } from "@/models/User";
-import AuthForm from "@/ui/components/authForm/AuthForm";
-import { AuthFormFieds as AuthFormType } from "@/ui/components/authForm/AuthFormProps";
+import AuthForm from "@/ui/components/auth-form/AuthForm";
+import { AuthFormFieds as AuthFormType } from "@/ui/components/auth-form/AuthFormProps";
 
 export default function Login() {
     const { login } = useAuth();

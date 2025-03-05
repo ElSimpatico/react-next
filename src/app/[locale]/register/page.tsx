@@ -7,8 +7,8 @@ import { ROUTES } from "@/constants/routes";
 import useFetch from "@/hooks/useFetch";
 import { useRouter } from "@/i18n/routing";
 import { User } from "@/models/User";
-import AuthForm from "@/ui/components/authForm/AuthForm";
-import { AuthFormFieds as AuthFormType } from "@/ui/components/authForm/AuthFormProps";
+import AuthForm from "@/ui/components/auth-form/AuthForm";
+import { AuthFormFieds as AuthFormType } from "@/ui/components/auth-form/AuthFormProps";
 
 export default function Register() {
     const router = useRouter();
