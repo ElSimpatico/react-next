@@ -5,7 +5,7 @@ import { getMessages } from "next-intl/server";
 
 import AuthProvider from "@/context/AuthProvider";
 import { routing } from "@/i18n/routing";
-import Footer from "@/ui/components/footer/footer";
+import Footer from "@/ui/components/footer/Footer";
 import Header from "@/ui/components/header/header";
 import ThemeProvider from "@/ui/components/theme-provider/themeProvider";
 

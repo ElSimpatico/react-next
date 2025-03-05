@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { CommonProps } from "@/types/CommonProps";
 
-import styles from "./footer.module.scss";
+import styles from "./Footer.module.scss";
 
 export default async function Footer({ testId }: CommonProps) {
     const t = await getTranslations();
