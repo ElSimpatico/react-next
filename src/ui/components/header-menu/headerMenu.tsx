@@ -24,7 +24,7 @@ import { CommonProps } from "@/types/CommonProps";
 import LanguageSelector from "../language-selector/LanguageSelector";
 import Navbar from "../navbar/navbar";
 
-import styles from "./headerMenu.module.scss";
+import styles from "./HeaderMenu.module.scss";
 interface HeaderMenuProps extends CommonProps {
     open?: boolean;
     fullWidth?: boolean;
