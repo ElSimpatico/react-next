@@ -20,9 +20,8 @@ import { IoMdClose, IoIosArrowDown } from "react-icons/io";
 
 import { LINKS } from "@/constants/links";
 import { CommonProps } from "@/types/CommonProps";
-
-import LanguageSelector from "../language-selector/LanguageSelector";
-import Navbar from "../navbar/navbar";
+import LanguageSelector from "@/ui/components/language-selector/LanguageSelector";
+import Navbar from "@/ui/components/navbar/Navbar";
 
 import styles from "./HeaderMenu.module.scss";
 interface HeaderMenuProps extends CommonProps {

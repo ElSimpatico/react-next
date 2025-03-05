@@ -4,9 +4,9 @@ import { useMemo } from "react";
 
 import { Link, usePathname } from "@/i18n/routing";
 
-import { NavbarProps } from "./navbarProps";
+import { NavbarProps } from "./NavbarProps";
 
-import styles from "./navbar.module.scss";
+import styles from "./Navbar.module.scss";
 
 export default function Navbar({ links, vertical, onClickLink }: NavbarProps) {
     const pathname = usePathname();
