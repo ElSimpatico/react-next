@@ -1,12 +1,7 @@
 import { Field } from "@chakra-ui/react";
 import React, { forwardRef } from "react";
 
-export interface FieldProps extends Omit<Field.RootProps, "label"> {
-    label?: React.ReactNode;
-    helperText?: React.ReactNode;
-    errorText?: React.ReactNode;
-    optionalText?: React.ReactNode;
-}
+import { FieldProps } from "./FormFieldProps";
 
 const FormField = forwardRef<HTMLDivElement, FieldProps>((props, ref) => {
     const { label, children, helperText, errorText, optionalText, ...rest } =

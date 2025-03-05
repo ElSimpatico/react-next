@@ -18,7 +18,7 @@ import React, {
 
 import { ROUTES } from "@/constants/routes";
 import { Link } from "@/i18n/routing";
-import FormField from "@/ui/components/formField/FormField";
+import FormField from "@/ui/components/form-field/FormField";
 
 import { AuthFormProps, AuthFormFieds, initAuthForm } from "./AuthFormProps";
 import useValidate from "./useValidate";
