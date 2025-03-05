@@ -1,16 +1,11 @@
 "use client";
 import { Button, IconButton } from "@chakra-ui/react";
-import React, { useCallback, MouseEvent } from "react";
+import React, { useCallback, MouseEvent, useMemo } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-import { CommonProps } from "@/types/CommonProps";
+import { Link, usePathname } from "@/i18n/routing";
 
-interface PaginationItemProps extends CommonProps {
-    page: number;
-    disabled?: boolean;
-    active?: boolean;
-    type?: "item" | "item-previous" | "item-next";
-}
+import { PaginationItemProps } from "./PaginationItemProps";
 
 export default function PaginationItem({
     page,
@@ -18,7 +13,7 @@ export default function PaginationItem({
     active,
     type = "item",
 }: PaginationItemProps) {
-    const href = disabled ? "#" : `?page=${page}`;
+    const pathname = usePathname();
     const variant = active ? "solid" : "outline";
     const isDisabled = disabled || active;
     const Component = type === "item" ? Button : IconButton;
@@ -32,13 +27,24 @@ export default function PaginationItem({
         [disabled],
     );
 
+    const href = useMemo(() => {
+        if (disabled) {
+            return "#";
+        }
+
+        return {
+            pathname: pathname,
+            query: { page },
+        };
+    }, [disabled, page, pathname]);
+
     return (
         <Component asChild variant={variant} disabled={isDisabled}>
-            <a href={href} onClick={onClickHandler}>
+            <Link href={href} onClick={onClickHandler}>
                 {type === "item" && page}
                 {type === "item-previous" && <IoIosArrowBack />}
                 {type === "item-next" && <IoIosArrowForward />}
-            </a>
+            </Link>
         </Component>
     );
 }

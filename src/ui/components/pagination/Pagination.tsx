@@ -1,6 +1,7 @@
 import React from "react";
 
-import PaginationItem from "./PaginationItem";
+import PaginationItem from "@/ui/components/pagination-item/PaginationItem";
+
 import { PginationProps } from "./PaginationProps";
 
 import styles from "./Pagination.module.scss";
@@ -12,8 +13,8 @@ export default function Pagination({
     nextPage = -1,
 }: PginationProps) {
     return (
-        <ul className={styles["pagination"]}>
-            <li key={"page_prev"}>
+        <ul className={styles.pagination}>
+            <li key="page_prev">
                 <PaginationItem
                     page={previousPage}
                     disabled={page <= 1}
@@ -32,7 +33,7 @@ export default function Pagination({
                     );
                 },
             )}
-            <li key={"page_next"}>
+            <li key="page_next">
                 <PaginationItem
                     page={nextPage}
                     disabled={page >= totalPages}
