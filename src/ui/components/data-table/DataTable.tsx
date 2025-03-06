@@ -10,7 +10,7 @@ export default function DataTable<T>({
     rowHeight,
 }: DataTableProps<T>) {
     return (
-        <Table.Root size="sm" variant="outline">
+        <Table.Root size="sm" variant="line">
             <Table.Header>
                 <Table.Row>
                     {Object.keys(columns).map((columnId) => (

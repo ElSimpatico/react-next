@@ -14,7 +14,7 @@ export default function PaginationItem({
     type = "item",
 }: PaginationItemProps) {
     const pathname = usePathname();
-    const variant = active ? "solid" : "outline";
+    const variant = active ? "solid" : "ghost";
     const isDisabled = disabled || active;
     const Component = type === "item" ? Button : IconButton;
 
