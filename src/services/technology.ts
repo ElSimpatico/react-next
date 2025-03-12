@@ -26,4 +26,14 @@ export class TechnologyService {
 
         return technology;
     }
+
+    async getTecnologyById(id: string): Promise<Technology | null> {
+        const technology = await prisma.technology.findUnique({
+            where: {
+                id,
+            },
+        });
+
+        return technology;
+    }
 }

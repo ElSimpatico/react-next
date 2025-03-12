@@ -3,6 +3,7 @@ import { Flex, Link as ChakraLink } from "@chakra-ui/react";
 import Image from "next/image";
 import React from "react";
 
+import { Entities } from "@/constants/entities";
 import { ROUTES } from "@/constants/routes";
 import { Link } from "@/i18n/routing";
 import { Technology } from "@/models/Technology";
@@ -18,7 +19,14 @@ export default function NameCell({ logoImageUrl, name, id }: Technology) {
                 unoptimized
             />
             <ChakraLink asChild>
-                <Link href={ROUTES.DETAIL.replace("[id]", id)}>{name}</Link>
+                <Link
+                    href={ROUTES.DETAIL.replace(
+                        "[entity]",
+                        Entities.TECHNOLOGIES,
+                    ).replace("[id]", id)}
+                >
+                    {name}
+                </Link>
             </ChakraLink>
         </Flex>
     );

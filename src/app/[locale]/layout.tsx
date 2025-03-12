@@ -5,8 +5,6 @@ import { getMessages } from "next-intl/server";
 
 import AuthProvider from "@/context/AuthProvider";
 import { routing } from "@/i18n/routing";
-import Footer from "@/ui/components/footer/Footer";
-import Header from "@/ui/components/header/Header";
 import ThemeProvider from "@/ui/components/theme-provider/ThemeProvider";
 
 import styles from "./layout.module.scss";
@@ -55,11 +53,7 @@ export default async function RootLayout({
             >
                 <NextIntlClientProvider messages={messages}>
                     <AuthProvider>
-                        <ThemeProvider>
-                            <Header />
-                            <main>{children}</main>
-                            <Footer />
-                        </ThemeProvider>
+                        <ThemeProvider>{children}</ThemeProvider>
                     </AuthProvider>
                 </NextIntlClientProvider>
             </body>

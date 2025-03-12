@@ -25,3 +25,9 @@ export async function getTechnologies(
         data,
     };
 }
+
+export async function getTecnology(id: string): Promise<Technology | null> {
+    const technologyService = new TechnologyService();
+
+    return await technologyService.getTecnologyById(id);
+}

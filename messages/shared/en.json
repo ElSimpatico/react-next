@@ -4,5 +4,7 @@
     "shared_logout": "Logout",
     "shared_footer": "Developed for {name}",
     "shared_navbar_home": "Home",
-    "shared_navbar_about": "About"
+    "shared_navbar_about": "About",
+    "shared_loading": "Loading...",
+    "shared_empty_content": "No content"
 }

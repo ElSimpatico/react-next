@@ -1,0 +1,13 @@
+.backbutton {
+    height: var(--nx-sizes-10);
+    min-width: var(--nx-sizes-10);
+    border-radius: var(--nx-radii-l2);
+    border-width: 1px;
+    border-color: var(--nx-colors-color-palette-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+        background: var(--nx-colors-color-palette-subtle);
+    }
+}

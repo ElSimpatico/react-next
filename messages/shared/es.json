@@ -4,5 +4,7 @@
     "shared_logout": "Cerrar sesión",
     "shared_footer": "Desarrollado por {name}",
     "shared_navbar_home": "Inicio",
-    "shared_navbar_about": "Sobre nosotros"
+    "shared_navbar_about": "Sobre nosotros",
+    "shared_loading": "Cargando...",
+    "shared_empty_content": "No hay contenido"
 }

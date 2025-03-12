@@ -1,0 +1,11 @@
+.detail-page {
+    &__header {
+        display: flex;
+        align-items: center;
+        padding: var(--nx-sizes-4) var(--nx-sizes-8);
+        border-bottom: var(--nx-sizes-0\.5) solid var(--nx-colors-border-muted);
+    }
+    &__back-button {
+        margin: 0 var(--nx-sizes-10) 0 0;
+    }
+}

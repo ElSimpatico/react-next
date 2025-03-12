@@ -1,0 +1,35 @@
+.technology-content {
+    display: grid;
+    grid-template-columns: 0.3fr auto 0.7fr;
+    padding-inline: var(--nx-sizes-8);
+    gap: 24px;
+    height: 100%;
+
+    &__section {
+        padding-block: 24px;
+    }
+
+    &__section-summary {
+        & > * {
+            margin: 0 0 24px 0;
+        }
+    }
+
+    &__image {
+        border: 1px solid black;
+        width: fit-content;
+        padding: 16px;
+    }
+
+    &__separator {
+        margin-block: 24px;
+    }
+
+    &__subsection-title {
+        margin: 0 0 16px 0;
+    }
+
+    &__subsection-text {
+        margin: 0 0 8px 0;
+    }
+}

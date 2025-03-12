@@ -7,6 +7,16 @@
     &__body {
         display: grid;
         min-height: 100dvh;
-        grid-template-rows: auto 1fr auto;
+        grid-template: "header" auto "main" 1fr "footer" auto / 1fr;
+
+        header {
+            grid-area: header;
+        }
+        main {
+            grid-area: main;
+        }
+        footer {
+            grid-area: footer;
+        }
     }
 }

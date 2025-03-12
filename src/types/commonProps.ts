@@ -3,6 +3,7 @@ export type SearchParams = Record<string, string | string[] | undefined>;
 
 export interface CommonProps {
     testId?: string;
+    classname?: string;
 }
 
 export interface CommonServerProps {
